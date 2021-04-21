@@ -22,6 +22,11 @@ using namespace std;
 //     return 0;
 // }
 
+void checkPasswordStrength(string current_password) {
+    cout << "Called the checkPasswordStrength() function" << endl;
+    cout << "..." << endl;
+}
+
 void changePassword(string current_password) {
     // 1. Want to verify new password != current password
     //    i. Probably set a temp = current_password, compare new_password with temp
@@ -78,12 +83,13 @@ int main() {
 
     while (user_choice != 5) {
         // Preferably need more menu options...
-        
+
         cout << "PASSWORD MENU PROGRAM:" << endl;
         cout << "1. Change current password." << endl;
         cout << "2. Review old passwords." << endl;
         cout << "3. Review current password." << endl;
-        cout << "4. To end your program." << endl;
+        cout << "4. Check password strength." << endl;
+        cout << "5. To end your program." << endl;
         cout << "..." << endl;
         cout << "Select from one of the following: ";
         cin >> user_choice;
@@ -125,6 +131,10 @@ int main() {
                 cout << "..." << endl;
                 break;
             case 4:
+                cout << "..." << endl;
+                checkPasswordStrength(current_password);
+                break;    
+            case 5:
                 cout << "..." << endl;
                 cout << "Thank you for checking in. Goodbye!" << endl;
                 cout << "..." << endl;
