@@ -14,9 +14,35 @@ We hope to implement a couple more functions including:
 * `bruteForcePassword()` - would be cool to implement a function that attempts to brute force guess a weak password; would probably want to verify the `satisfaction_score` we receive from the `checkPasswordStrength()` function to prevent `bruteForcePassword()` from attempting to solve a strong, complex password.
 * `bruteForceTime()` - alternatively, we could also implement a function that returns how much time it would take to brute force your current password and maybe the old passwords as well. 
 
+### Prior Knowledge
+This assignment assumes students have a knowledge in the following areas before starting this assignment: 
+
+* Data types and writing functions
+* Conditionals
+    * `if()...else if()...else`
+    * `switch()`
+* Operators
+    * Relational operators (>, >=, <, <=, ==, !=)
+    * Logical operators (&&, ||, !)
+* Loops
+    * `for`
+    * `while`
+    * `do while`
+
+### 'Arrays' and 'Strings'
+For this assignment, we hope to accomplish several things to help reinforce topics in 'arrays' and 'strings':
+* Use loops to access and traverse through arrays.
+    * Access an array of previous passwords and compare with current/new passwords.
+* Use loops to access individual characters within a string variable.
+    * Determine whether current/new password is strong by analyzing diversity of individual characters and variable length.
+* User operators to compare strings (or characters)
+    * Want to verify if new password is similar to previous password(s).
+* Reinforce prior knowledge as shared above.
+
+### Ethical Considerations
 
 ## II. Demo
-To demo, either download the .zip folder or run `git clone https://github.com/joshuapaup/AI-ethics-passwords-assignment.git` in Terminal to a directory of your choice. 
+To demo, either download the .zip folder or run in your Terminal `git clone https://github.com/joshuapaup/AI-ethics-passwords-assignment.git` to a directory of your choice. 
 
 From there, open the 'Passwords Assignment` folder where you will be presented with two folders: 'C++' or 'Python'.
 
