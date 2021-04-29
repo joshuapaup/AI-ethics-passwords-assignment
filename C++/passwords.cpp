@@ -29,6 +29,12 @@ void checkPasswordStrength(string current_password) {
         }
     }
     for (int i = 0; i < current_password.size(); i++) {
+        if (isdigit(current_password[i])) {
+            satisfaction_counter++;
+            break;
+        }
+    }
+    for (int i = 0; i < current_password.size(); i++) {
         if (current_password[i] == ("!" || "@" || "#" || "$" || "%" || "^" || "&" || "*" || "(" || ")" || "_" || "-" || "+" || "=" || "?" || "/")) {
             satisfaction_counter++;
             break;
@@ -127,7 +133,6 @@ int main() {
 
     while (user_choice != 5) {
         // Preferably need more menu options...
-
         cout << "PASSWORD MENU PROGRAM:" << endl;
         cout << "1. Change current password." << endl;
         cout << "2. Review old passwords." << endl;
