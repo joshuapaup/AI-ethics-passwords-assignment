@@ -45,7 +45,7 @@ void checkPasswordStrength(string current_password) {
         cout << "Password is MEDIUM in strength." << endl;
         cout << "..." << endl;
     }
-    else {
+    else if (satisfaction_counter >= 4) {
         cout << "Password is STRONG in strength." << endl;
         cout << "..." << endl;
     }
@@ -63,22 +63,23 @@ string changePassword(string current_password) {
     //
     cout << "Called the changePassword() function" << endl;
     cout << "..." << endl;
-    string new_password;
+    string new_password = current_password;
     string verify = current_password;
     cout << "Please input your new password: ";
-    while (new_password != verify) {
+    while (new_password == current_password) {
         cin >> new_password;
-        if (new_password != verify) {
-            cout << "Your new password is " << new_password << endl;
-            return new_password;
-        }
-        else {
+        if (new_password == current_password) {
             cout << "Your new password cannot match your previous password..." << endl;
             cout << "..." << endl;
             cout << "Please input your new password: ";
-            cin >> new_password;
+        }
+        else {
+            checkPasswordStrength(new_password);
+            cout << "Your new password is '" << new_password << "'" << endl;
+            cout << "..." << endl;
         }
     }
+    return new_password;
 }
 
 void reviewOldPasswords(string passwords[5]) {
