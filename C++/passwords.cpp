@@ -1,4 +1,5 @@
 #include <iostream>
+#include <cctype>
 using namespace std;
 
 // Privacy rights and Internet privacy rights
@@ -8,26 +9,49 @@ using namespace std;
 //
 // https://haveibeenpwned.com/
 
-// bool isCompatible(string current_password) {
-//     1. Want to have passwords be a certain length (conditional on length of i)
-//     2. Want to have passwords satisfy containing certain characters
-//        i. At least one uppercase and one lowercase letter, two special characters
-//        ii. Probably have a requirement_counter > 4
-//
-//     for (int i = 0; i < current_password.size(); i++) {
-//         if (current_password[i] == ASCII value for lower case letters) {}
-//         else if (current_password[i] == ASCII value for upper case letters) {}
-//         else if (current_password[i] == ASCII value for special character)
-//     }
-//     return 0;
-// }
-
 void checkPasswordStrength(string current_password) {
     cout << "Called the checkPasswordStrength() function" << endl;
     cout << "..." << endl;
+    int satisfaction_counter = 0;
+    if (current_password.size() > 12) {
+        satisfaction_counter++;
+    }
+    for (int i = 0; i < current_password.size(); i++) {
+        if (islower(current_password[i])) {
+            satisfaction_counter++;
+            break;
+        }
+    }
+    for (int i = 0; i < current_password.size(); i++) {
+        if (isupper(current_password[i])) {
+            satisfaction_counter++;
+            break;
+        }
+    }
+    for (int i = 0; i < current_password.size(); i++) {
+        if (current_password[i] == ("!" || "@" || "#" || "$" || "%" || "^" || "&" || "*" || "(" || ")" || "_" || "-" || "+" || "=" || "?" || "/")) {
+            satisfaction_counter++;
+            break;
+        }
+    }
+    cout << "Your password '" << current_password << "' has a satisfaction score = " << satisfaction_counter << endl;
+    
+    
+    if (satisfaction_counter == 0 || satisfaction_counter == 1) {
+        cout << "Your password is WEAK in strength." << endl;
+        cout << "..." << endl;
+    }
+    else if (satisfaction_counter == 2 || satisfaction_counter == 3) {
+        cout << "Password is MEDIUM in strength." << endl;
+        cout << "..." << endl;
+    }
+    else {
+        cout << "Password is STRONG in strength." << endl;
+        cout << "..." << endl;
+    }
 }
 
-void changePassword(string current_password) {
+string changePassword(string current_password) {
     // 1. Want to verify new password != current password
     //    i. Probably set a temp = current_password, compare new_password with temp
     // 2. Want to verify new password != previous_passwords[5]
@@ -36,15 +60,34 @@ void changePassword(string current_password) {
     //    previous_passwords[4] with temp
     // 3. Want to verify the new_password is "compatible"
     //    i. Use the isCompatible() function
-    // 
+    //
     cout << "Called the changePassword() function" << endl;
     cout << "..." << endl;
+    string new_password;
+    string verify = current_password;
+    cout << "Please input your new password: ";
+    while (new_password != verify) {
+        cin >> new_password;
+        if (new_password != verify) {
+            cout << "Your new password is " << new_password << endl;
+            return new_password;
+        }
+        else {
+            cout << "Your new password cannot match your previous password..." << endl;
+            cout << "..." << endl;
+            cout << "Please input your new password: ";
+            cin >> new_password;
+        }
+    }
 }
 
 void reviewOldPasswords(string passwords[5]) {
+    cout << "Oldest...[";
     for (int i = 0; i < 5; i++) {
-        cout << "Former password " + to_string(5 - i) + ": " + passwords[i] << endl;
+        // cout << "Former password " << 5 - i << ": " << passwords[i] << endl;
+        cout << passwords[i] << ", ";
     }
+    cout << "]...Newest" << endl;
     cout << "" << endl;
 }
 
@@ -69,7 +112,7 @@ int main() {
         }
         else {
             allowed_attempts--;
-            cout << "You have " + to_string(allowed_attempts) + " attempt(s) remaining..." << endl;
+            cout << "You have " << allowed_attempts << " attempt(s) remaining..." << endl;
             if (allowed_attempts == 0) {
                 cout << "You have no more attempts. Try again later. Goodbye!" << endl;
                 exit(0);
@@ -102,7 +145,7 @@ int main() {
                 while (response != "Y" || response != "N") {
                     if (response == "Y") {
                         cout << "..." << endl;
-                        changePassword(current_password);
+                        current_password = changePassword(current_password);
                         break;
                     }
                     else if (response == "N") {
