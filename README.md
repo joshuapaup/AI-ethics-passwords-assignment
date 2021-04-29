@@ -56,3 +56,7 @@ From there, open the 'Passwords Assignment` folder where you will be presented w
 * From there, you will be able to interact with the assignment in your Terminal.
 
 ### Python Version
+* Open Anaconda Navigator (or other software that hosts Jupyter Notebooks) and open select 'Launch' for Jupyter Notebooks.
+* Once your `localhost` opens in your browser, navigate to your Python director and open `password_Assignments.ipynb`. 
+* From there, run each of the cells above the driver cell at the bottom of the notebook to compile your Python code.
+* When you're ready, run the driver cell and you will be able to interact with the assignment.
