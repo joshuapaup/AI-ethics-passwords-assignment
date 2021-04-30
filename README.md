@@ -3,14 +3,16 @@
 ## I. Introduction
 The Passwords Assignment is an introductory computing assignment meant to reinforce topics in 'arrays' and 'strings', while also helping students consider ethical concepts in passwords, password management programs, and privacy rights.
 
-As of Thursday, 29 April 2021, the assignment has students implement four functions:
+As of Friday, 30 April 2021, the assignment has students implement five functions:
 * `main()` - hosts a login system (the default password is 'password') that allows you three tries to get right and hosts the password menu program within a switch statement that executes other functions. 
 * `checkPasswordStrength()` - returns how strong your current password is on the basis that it is 12 characters long, has an upper case letter, a lower case letter, and a special character. 
-* `changePassword()` - allows you to change your current password, returns your new password's strength, and verifies if your new password is different from your previous password. 
+* `changePassword()` - allows you to change your current password, returns your new password's strength, and verifies if your new password is different from your previous password.
+    * *Possible implementation #1* - Compare the inputed `new_password` with the elements of `previous_passwords[5]` to reinforce to not use a previous password.
+* `updateOldPasswords()` - updates the array of `previous_passwords[5]` by shifting values one space to the left and updating the final element with the previous `current_password`. 
 * `reviewOldPasswords()` - prints your five most recent passwords.
 
 We hope to implement a couple more functions including:
-* `updateOldPasswords()` - want to call this function during the `changePassword()` function call to update the array with the previous password.
+* ~~`updateOldPasswords()` - want to call this function during the `changePassword()` function call to update the array with the previous password.~~ ✅ (4/30/21) 
 * `bruteForcePassword()` - would be cool to implement a function that attempts to brute force guess a weak password; would probably want to verify the `satisfaction_score` we receive from the `checkPasswordStrength()` function to prevent `bruteForcePassword()` from attempting to solve a strong, complex password.
 * `bruteForceTime()` - alternatively, we could also implement a function that returns how much time it would take to brute force your current password and maybe the old passwords as well. 
 
