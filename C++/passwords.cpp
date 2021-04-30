@@ -10,7 +10,6 @@ using namespace std;
 // https://haveibeenpwned.com/
 
 void checkPasswordStrength(string current_password) {
-    cout << "Called the checkPasswordStrength() function" << endl;
     cout << "..." << endl;
     int satisfaction_counter = 0;
     if (current_password.size() > 12) {
@@ -58,16 +57,6 @@ void checkPasswordStrength(string current_password) {
 }
 
 string changePassword(string current_password) {
-    // 1. Want to verify new password != current password
-    //    i. Probably set a temp = current_password, compare new_password with temp
-    // 2. Want to verify new password != previous_passwords[5]
-    //    i. Want to update previous_passwords[5] with recent password
-    //    ii. Pop the previous_passwords[0], shift values to left, and update 
-    //    previous_passwords[4] with temp
-    // 3. Want to verify the new_password is "compatible"
-    //    i. Use the isCompatible() function
-    //
-    cout << "Called the changePassword() function" << endl;
     cout << "..." << endl;
     string new_password = current_password;
     string verify = current_password;
@@ -88,18 +77,26 @@ string changePassword(string current_password) {
     return new_password;
 }
 
-void reviewOldPasswords(string passwords[5]) {
-    cout << "Oldest...[";
-    for (int i = 0; i < 5; i++) {
-        // cout << "Former password " << 5 - i << ": " << passwords[i] << endl;
-        cout << passwords[i] << ", ";
+void updateOldPasswords(string previous_passwords[5], string old_password) {
+    cout << "Called the updateOldPasswords() function" << endl;
+    for (int i = 0; i < 4; i++) {
+        previous_passwords[i] = previous_passwords[i+1];
     }
-    cout << "]...Newest" << endl;
-    cout << "" << endl;
+    previous_passwords[4] = old_password;
+}
+
+void reviewOldPasswords(string passwords[5]) {
+    cout << "............" << endl;
+    cout << "...Oldest..." << endl;
+    for (int i = 0; i < 5; i++) {
+        cout << passwords[i] << endl;
+    }
+    cout << "...Newest..." << endl;
+    cout << "............" << endl;
 }
 
 int main() {
-    string previous_passwords[5] = {"filler1", "filler2", "filler3", "filler4", "filler5"};
+    string previous_passwords[5] = {"", "", "", "", ""};
     int user_choice;
     string current_password = "password";
     int allowed_attempts = 3;
@@ -151,6 +148,7 @@ int main() {
                 while (response != "Y" || response != "N") {
                     if (response == "Y") {
                         cout << "..." << endl;
+                        updateOldPasswords(previous_passwords, current_password); 
                         current_password = changePassword(current_password);
                         break;
                     }
