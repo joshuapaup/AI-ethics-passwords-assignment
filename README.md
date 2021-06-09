@@ -43,6 +43,20 @@ For this assignment, we hope to accomplish several things to help reinforce topi
 
 ### Ethical Considerations
 
+## Resources
+* https://random-ize.com/how-long-to-hack-pass/?
+* https://haveibeenpwned.com/
+* https://en.wikipedia.org/wiki/Password_cracking
+
+### Suggested Augmentations
+For this assignment, we don't cover every concept but want to leave that up to the discretion of any professor who wishes to use this assignment. Below includes a few of our own augmentation suggestions:
+* Integrate I/O concepts with this assignment.
+* Implement a new way of checking password strength.
+* Make new password not equal to any of the previous passwords instead of most recent password.
+* Pursue how to change log-in password from characters to asterisks.
+* Menu option to store passwords across multiple programs/sites.
+* Implementation to have a specific threshold you would like to have your passwords be (in relation to a `bruteForceChecker()` or `satisfaction_counter`)
+
 ## II. Demo
 To demo, either download the .zip folder or run in your Terminal `git clone https://github.com/joshuapaup/AI-ethics-passwords-assignment.git` to a directory of your choice. 
 
