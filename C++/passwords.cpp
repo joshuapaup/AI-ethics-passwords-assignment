@@ -9,6 +9,14 @@ using namespace std;
 //
 // https://haveibeenpwned.com/
 
+void bruteForceChecker(string current_password) {
+    // 9 June 2021 - Look at bruteForceChecker.js for inspiration
+    // To-Do-Function for second version of passwords assignment
+
+    // Designate the students to write their own thresholds and explain
+    // in the comments why they chose those thresholds.
+}
+
 void checkPasswordStrength(string current_password) {
     cout << "..." << endl;
     int satisfaction_counter = 0;
@@ -106,7 +114,6 @@ int main() {
     cout << "..." << endl;
     cout << "Please input your password: ";
     while (user_input != current_password) {
-        // Pursue changing user_input into asterisks in the future
         cin >> user_input;
         if (user_input == current_password) {
             cout << "Logging you in..." << endl;
@@ -128,7 +135,6 @@ int main() {
     cout << "..." << endl;
 
     while (user_choice != 5) {
-        // Preferably need more menu options...
         cout << "PASSWORD MENU PROGRAM:" << endl;
         cout << "1. Change current password." << endl;
         cout << "2. Review old passwords." << endl;
