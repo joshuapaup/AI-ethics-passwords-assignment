@@ -78,7 +78,6 @@ string changePassword(string current_password) {
 }
 
 void updateOldPasswords(string previous_passwords[5], string old_password) {
-    cout << "Called the updateOldPasswords() function" << endl;
     for (int i = 0; i < 4; i++) {
         previous_passwords[i] = previous_passwords[i+1];
     }
