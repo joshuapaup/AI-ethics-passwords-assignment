@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cctype>
+#include <math.h>
 using namespace std;
 
 // Privacy rights and Internet privacy rights
@@ -9,59 +10,83 @@ using namespace std;
 //
 // https://haveibeenpwned.com/
 
-void bruteForceChecker(string current_password) {
-    // 9 June 2021 - Look at bruteForceChecker.js for inspiration
-    // To-Do-Function for second version of passwords assignment
-
-    // Designate the students to write their own thresholds and explain
-    // in the comments why they chose those thresholds.
-}
-
 void checkPasswordStrength(string current_password) {
     cout << "..." << endl;
-    int satisfaction_counter = 0;
-    if (current_password.size() > 12) {
-        satisfaction_counter++;
-    }
+    int character_counter = 0;
+    // These four boolean variables will help us count each conditional in later for-loop
+    // only once. 
+    bool is_upper = false;
+    bool is_lower = false;
+    bool is_digit = false;
+    bool is_other = false;
+
+    // Most recent record for a computer was 100 billion passwords/sec.
+    // https://theconversation.com/a-computer-can-guess-more-than-100-000-000-000-passwords-per-second-still-think-yours-is-secure-144418
+    long cracking_rate = 100000000000;
+
+    // Using a for loop, we want to traverse the characters of current_password
+    // If we run into any instance where current_password[i] is uppercase, lowercase,
+    // is a digit, or a special character, we want to update character_counter.
+    // * character_counter += 26 with uppercase and lowercase because a computer checks
+    // 26 unique characters each.
+    // * character_counter += 10 with digit because there's 10 unique characters.
+    // * character_counter += 32 with special because there's 32 unique characters.
+    //
+    // We only want to update character_counter ONCE for each conditional. 
     for (int i = 0; i < current_password.size(); i++) {
-        if (islower(current_password[i])) {
-            satisfaction_counter++;
-            break;
+        if (islower(current_password[i]) && is_lower == false) {
+            character_counter += 26;
+            is_lower = true;
+        }
+        else if (isupper(current_password[i]) && is_upper == false) {
+            character_counter += 26;
+            is_upper = true;
+        }
+        else if (isdigit(current_password[i]) && is_digit == false) {
+            character_counter += 10;
+            is_digit = true;
+        }
+        else if ((!isdigit(current_password[i]) && !isupper(current_password[i]) && !islower(current_password[i])) && is_other == false) {
+            character_counter += 32;
+            is_other = true;
+        }
+        else {
+            continue;
         }
     }
-    for (int i = 0; i < current_password.size(); i++) {
-        if (isupper(current_password[i])) {
-            satisfaction_counter++;
-            break;
-        }
-    }
-    for (int i = 0; i < current_password.size(); i++) {
-        if (isdigit(current_password[i])) {
-            satisfaction_counter++;
-            break;
-        }
-    }
-    for (int i = 0; i < current_password.size(); i++) {
-        if (current_password[i] == ("!" || "@" || "#" || "$" || "%" || "^" || "&" || "*" || "(" || ")" || "_" || "-" || "+" || "=" || "?" || "/")) {
-            satisfaction_counter++;
-            break;
-        }
-    }
-    cout << "Your password '" << current_password << "' has a satisfaction score = " << satisfaction_counter << endl;
-    
-    
-    if (satisfaction_counter == 0 || satisfaction_counter == 1) {
-        cout << "Your password is WEAK in strength." << endl;
-        cout << "..." << endl;
-    }
-    else if (satisfaction_counter == 2 || satisfaction_counter == 3) {
-        cout << "Password is MEDIUM in strength." << endl;
-        cout << "..." << endl;
-    }
-    else if (satisfaction_counter >= 4) {
-        cout << "Password is STRONG in strength." << endl;
-        cout << "..." << endl;
-    }
+
+    // Take character_counter and raise it to the current_password.size() power. 
+    // A computer will have to check X unique keyboard characters for each Y position.
+    // There are other ways to count decimalYears, decimalMonths, etc. That is up to an
+    // instructor's discretion as to modify this section.
+    float combinations = pow(character_counter, current_password.size());
+    float total_seconds = combinations/cracking_rate;
+
+    float decimalYears = total_seconds/(3600*24*365);
+    int years = floor(decimalYears);
+
+    float decimalMonths = (decimalYears-years)*12;
+    int months = floor(decimalMonths);
+
+    float decimalDays = (decimalMonths-months)*30;
+    int days = floor(decimalDays);
+
+    float decimalHours = (decimalDays - days)*24;
+    int hours = floor(decimalHours);
+
+    float decimalMinutes = (decimalHours - hours)*60;
+    int minutes = floor(decimalMinutes);
+
+    float decimalSeconds = (decimalMinutes - minutes)*60;
+    int seconds = floor(decimalSeconds);
+
+    cout << "It would take approximately..." << endl;
+    cout << years << " years, " << months << " months, " << days << " days, " << hours << " hours, " << minutes << " minutes, " << seconds << " seconds" << endl;
+    cout << "To brute force your current password." << endl;
+    cout << "..." << endl;
+
+    // Designate the students to write their own weak-to-strong thresholds and explain
+    // in comments or write-up why they chose those thresholds.
 }
 
 string changePassword(string current_password) {
