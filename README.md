@@ -3,12 +3,19 @@
 ## I. Introduction
 The Passwords Assignment is an introductory computing assignment meant to reinforce topics in 'arrays' and 'strings', while also helping students consider ethical concepts in passwords and password management programs.
 
+
 As of Sunday, 13 June 2021, the assignment has students implement five functions:
 * `main()` - hosts a login system (the default password is 'password') that allows you three tries to get right and hosts the password menu program within a switch statement that executes other functions. 
 * `checkPasswordStrength()` - returns how long it would take for a computer to brute force its way to crack your password. 
 * `changePassword()` - change your current password and update your previous passwords.
 * `updateOldPasswords()` - updates an array that tracks your five most recent passwords.
 * `reviewOldPasswords()` - prints your five most recent passwords.
+
+FYI: Because of defering datatypes between Python and C++ `checkPasswordStrength()` may produce very minimal yet different results. 
+Ex: P@s$W0rdZz!: 
+* Python Brute Force time - 1605  years,  5  months,  15  days,  23  hours,  45  minutes  36  seconds
+* C++ Brute Force time - 1605 years, 5 months, 16 days, 0 hours, 36 minutes, 33 seconds
+
 
 ## II. Prior Knowledge
 This assignment assumes students have a knowledge in the following areas before starting this assignment: 
