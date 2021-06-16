@@ -13,8 +13,8 @@ As of Sunday, 13 June 2021, the assignment has students implement five functions
 
 FYI: Because of defering datatypes between Python and C++ `checkPasswordStrength()` may produce very minimal yet different results. 
 * Ex: P@s$W0rdZz!: 
-* Python Brute Force time - 1605  years,  5  months,  15  days,  23  hours,  45  minutes  36  seconds
-* C++ Brute Force time - 1605 years, 5 months, 16 days, 0 hours, 36 minutes, 33 seconds
+   * Python Brute Force time - 1605  years,  5  months,  15  days,  23  hours,  45  minutes  36  seconds
+   * C++ Brute Force time - 1605 years, 5 months, 16 days, 0 hours, 36 minutes, 33 seconds
 
 
 ## II. Prior Knowledge
