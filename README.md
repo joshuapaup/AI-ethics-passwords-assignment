@@ -36,7 +36,7 @@ For this assignment, we hope to accomplish several things to help reinforce topi
 
 * Fake log-in pages (phishing): Other than making sure your passwords are strong enough and updated frequently, what are other password protection best practices to prevent against password extraction methods you should worry?
 
-* Imagine your website has a login page with very critical user information attached to their account? What can you implement through code, images, design, etc. to encourage good password behavior with your users? Please explain why you think this would be effective.
+* Imagine your website has a login page with very critical user information attached to their account. What can you implement through code, images, design, etc. to encourage good password behavior with your users? Please explain why you think this would be effective.
 
 ## IV. Resources
 * [How long to hack my current password?](https://random-ize.com/how-long-to-hack-pass/?)
